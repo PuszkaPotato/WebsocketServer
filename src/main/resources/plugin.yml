@@ -1,0 +1,93 @@
+main: ${PACKAGE}.${NAME}
+name: ${NAME}
+version: "${VERSION}"
+api-version: "1.20.4"
+author: PuszkaPotato
+description: WebSocket Server for use with external clients, like discord bots.
+commands:
+  wss:
+    description: Base command for WebSocket Server
+    usage: "For a list of commands, type /wss help"
+    aliases: websocketserver
+    permission: wss
+  wss authkey generate:
+    description: Generate the authentication key for the WebSocket Server
+    usage: "/wss authkey generate"
+    permission: wss.authkey.generate
+  wss authkey list:
+    description: List all active authentication keys
+    usage: "/wss authkey list"
+    permission: wss.authkey.list
+  wss authkey remove:
+    description: Remove an authentication key
+    usage: "/wss authkey remove <key>"
+    permission: wss.authkey.remove
+  wss authkey disable:
+    description: Disable an authentication key
+    usage: "/wss authkey disable <key>"
+    permission: wss.authkey.disable
+  wss authkey info:
+    description: Get information about an authentication key
+    usage: "/wss authkey info <key>"
+    permission: wss.authkey.info
+  wss connections:
+    description: List all active connections
+    usage: "/wss connections"
+    permission: wss.connections.list
+  wss conn info:
+    description: Get information about a connection
+    usage: "/wss conn info <connectionId>"
+    permission: wss.connections.info
+  wss conn terminate:
+    description: Terminate a connection
+    usage: "/wss conn terminate <connectionId>"
+    permission: wss.connections.terminate
+  wss conn send:
+    description: Send a message to a connection
+    usage: "/wss conn send <connectionId> <message>"
+    permission: wss.connections.send
+permissions:
+  wss:
+    description: Base command for WebSocket Server
+    default: false
+  wss.authkey.generate:
+    description: Generate the authentication key for the WebSocket Server
+    default: false
+  wss.authkey.list:
+    description: List all active authentication keys
+    default: false
+  wss.authkey.remove: 
+    description: Remove an authentication key
+    default: false 
+  wss.authkey.disable:
+    description: Disable an authentication key
+    default: false
+  wss.authkey.info:
+    description: Get information about an authentication key
+    default: false
+  wss.connections.list:
+    description: List all active connections
+    default: false
+  wss.connections.info:
+    description: Get information about a connection
+    default: false
+  wss.connections.terminate:
+    description: Terminate a connection
+    default: false
+  wss.connections.send:
+    description: Send a message to a connection
+    default: false
+  wss.*:
+    description: Grants all other permissions
+    default: false
+    children:
+      wss: true
+      wss.authkey.generate: true
+      wss.authkey.list: true
+      wss.authkey.remove: true
+      wss.authkey.disable: true
+      wss.authkey.info: true
+      wss.connections.list: true
+      wss.connections.info: true
+      wss.connections.terminate: true
+      wss.connections.send: true
